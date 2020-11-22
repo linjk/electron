@@ -5,7 +5,9 @@ function createWindow() {
 	// 打开调试窗口
 	//win.webContents.openDevTools();
 
-	win.loadFile('index.html');
+	win.setRepresentedFilename('/Users/linjk/Documents/code/frontend/electron/package.json');
+
+	win.loadFile('./index.html');
 
 	win.on('closed', () => {
 		console.log('window closed');
