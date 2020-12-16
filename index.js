@@ -12,7 +12,7 @@ function createWindow() {
 	// 打开调试窗口
 	win.webContents.openDevTools();
 
-	win.setRepresentedFilename('/Users/linjk/Documents/code/frontend/electron/package.json');
+	//win.setRepresentedFilename('/Users/linjk/Documents/code/frontend/electron/package.json');
 
 	win.loadFile('./index.html');
 

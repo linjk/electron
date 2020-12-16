@@ -28,3 +28,19 @@ function onClick_OpenAndCreateDirectory() {
         label.innerText = result.filePaths;
     });;
 }
+
+function onClick_Welcome() {
+    const label = document.getElementById('label');
+    var options = {};
+    options.title = 'Information';
+    options.message = 'Message';
+    //options.icon = './img/msg.png';
+    options.type = 'error'; // error, question, warning
+    options.buttons = ['btn_1', 'btn_2'];
+    //label.innerText = dialog.showMessageBox(options);
+    //dialog.showErrorBox('Error', 'msg');
+    var p = Promise.resolve(dialog.showMessageBox(options));
+    p.then(function(s) {
+        console.log('you click: ' + s.response);
+    });
+}
