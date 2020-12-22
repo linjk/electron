@@ -22,6 +22,8 @@ function createWindow() {
 
 	//win.setRepresentedFilename('/Users/linjk/Documents/code/frontend/electron/package.json');
 
+	require('./main/menu.js');
+
 	win.loadFile('./index.html');  // 加载页面
 
 	win.on('closed', () => {
