@@ -1,4 +1,5 @@
 const { dialog } = require('electron').remote;
+const fs = require('fs');
 
 function onClick_OpenFile() {
     const label = document.getElementById('label');
@@ -11,11 +12,17 @@ function onClick_OpenFile() {
     optoins.properties = ['openFile'];
     optoins.filters = [
         {name: '文本文件', extensions: ['txt']},
+        {name: 'JS文件', extensions: ['js']},
         {name: '*', extensions: ['*']},
     ];
     // 显示打开文件对话框，并将选择的文件显示在页面上
     dialog.showOpenDialog(optoins).then(result => {
-        label.innerText = result.filePaths;
+        console.log('open file: ', result.filePaths[0]);
+        //label.innerText = result.filePaths;
+        const fileContent = document.querySelector('#fileContent');
+        fs.readFile(result.filePaths[0], (err, data) => {
+            fileContent.innerHTML = data;
+        });
     });
 }
 

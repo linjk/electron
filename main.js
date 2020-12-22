@@ -1,3 +1,11 @@
+/**
+ * Electron运行流程：
+ * 1. 读取package.json中的入口文件，即index.js
+ * 2. main.js 主进程【有且只有一个主进程】中创建渲染进程【打开的每一个窗口都是一个渲染进程】
+ * 3. 读取应用页面的布局和样式
+ * 4. 使用IPC在主进程执行任务并获取信息
+ */
+
 const {app, BrowserWindow} = require('electron')
 
 function createWindow() {
@@ -5,8 +13,8 @@ function createWindow() {
 		width: 800, 
 		height: 600, 
 		webPreferences: {
-			nodeIntegration: true,  // 解决require is not defined问题
-			webviewTag: true,  // 解决webview无法显示问题
+			nodeIntegration: true,  // 解决require is not defined问题，node的所有包都可以在渲染进程中使用
+			webviewTag: true,       // 解决webview无法显示问题
 			enableRemoteModule: true
 	}});
 	// 打开调试窗口
@@ -14,7 +22,7 @@ function createWindow() {
 
 	//win.setRepresentedFilename('/Users/linjk/Documents/code/frontend/electron/package.json');
 
-	win.loadFile('./index.html');
+	win.loadFile('./index.html');  // 加载页面
 
 	win.on('closed', () => {
 		console.log('window closed');
