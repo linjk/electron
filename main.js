@@ -6,7 +6,7 @@
  * 4. 使用IPC在主进程执行任务并获取信息
  */
 
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, BrowserView} = require('electron')
 
 function createWindow() {
 	win = new BrowserWindow({
@@ -25,6 +25,12 @@ function createWindow() {
 	require('./main/menu.js');
 
 	win.loadFile('./index.html');  // 加载页面
+
+	// 浏览器
+	// var view = new BrowserView();
+	// win.setBrowserView(view);
+	// view.setBounds({x: 0, y: 120, width: 400, height: 380});
+	// view.webContents.loadURL('http://blog.csdn.net/linjingke32');
 
 	win.on('closed', () => {
 		console.log('window closed');

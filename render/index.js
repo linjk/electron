@@ -11,6 +11,10 @@ window.onload = function() {
     }
 }
 
+function onClick_OpenSubwindow() {
+    window.open('https://wwww.baidu.com')
+}
+
 function onClick_OpenFile() {
     const label = document.getElementById('label');
     var optoins = {};
