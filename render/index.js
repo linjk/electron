@@ -51,3 +51,24 @@ function onClick_Welcome() {
         console.log('you click: ' + s.response);
     });
 }
+
+const { remote } = require('electron')
+
+var righetClickTemplate = [
+    {
+        label: '关于'
+    },
+    {
+        label: '更多'
+    }
+]
+
+var rightMenu = remote.Menu.buildFromTemplate(righetClickTemplate);
+
+window.addEventListener('contextmenu', function(event) {
+    event.preventDefault(); // 阻止默认事件
+
+    rightMenu.popup({
+        window: remote.getCurrentWindow()
+    })
+});
