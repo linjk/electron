@@ -1,5 +1,15 @@
 const { dialog } = require('electron').remote;
+const { shell } = require('electron');
 const fs = require('fs');
+
+window.onload = function() {
+    var linjkGithubIo = document.querySelector('#linjk');
+    linjkGithubIo.onclick = function(e) {
+        e.preventDefault();
+
+        shell.openExternal(this.getAttribute('href'));
+    }
+}
 
 function onClick_OpenFile() {
     const label = document.getElementById('label');
