@@ -86,3 +86,11 @@ window.addEventListener('contextmenu', function(event) {
         window: remote.getCurrentWindow()
     })
 });
+
+window.addEventListener('message', (msg) => {
+    alert('登录结果: ' + JSON.stringify(msg));
+});
+
+function onClick_OpenLogin() {
+    window.open('./render/view/login/login.html');
+} 
